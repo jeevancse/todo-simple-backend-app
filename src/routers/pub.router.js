@@ -5,3 +5,4 @@ export const pubRoute = express.Router();
 
 
 pubRoute.post("/register", userController.register)
+pubRoute.post("/login", userController.login)

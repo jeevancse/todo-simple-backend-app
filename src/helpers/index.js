@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+var jwt = require('jsonwebtoken');
 
 
 export const responseObject = (req, res, data, responseCode, success, message) => {
@@ -21,4 +22,9 @@ export const genratePassword = async (password) => {
 export const comparePassword = async (enterPassword, oldPassword) => {
   const check = await bcrypt.compare(enterPassword, oldPassword);
   return check;
+}
+
+export const generateJwtToken = async (payload) => {
+  const token =  jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1d"});
+  return token;
 }
