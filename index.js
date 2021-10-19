@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use("/pub",pubRoute)
 
-app.listen(PORT, () => {
+app.listen(PORT, function(){
     console.log(`App is listening at ${PORT}`)
 })
 
