@@ -124,4 +124,28 @@ export default {
       );
     }
   },
+
+  async uploadFile(req, res) {
+    try {
+
+      console.log("=====filenaem", req.file)
+      const uploadedFile = req.file;
+
+      if (uploadedFile) {
+        return res.json({
+          message: "image upload successfully",
+          filename: req.file,
+        });
+      } else {
+        return res.json({ message: "something went wrong" });
+      }
+    } catch (err) {
+      return res.json({ message: "something went wrong" });
+    }
+  },
 };
+
+
+
+
+
