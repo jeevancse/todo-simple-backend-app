@@ -6,4 +6,4 @@ export const userRouter = express.Router();
 
 
 
-// userRouter.post("register", userController.register)
+userRouter.get("/get-profile", userController.getProfile)

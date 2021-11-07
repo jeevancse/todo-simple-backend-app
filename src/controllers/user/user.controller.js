@@ -125,10 +125,36 @@ export default {
     }
   },
 
+  async getProfile(req, res) {
+    try {
+      const fndUser = await Users.findOne({ _id: req?.user?._id });
+      if (fndUser) {
+        return responseObject(
+          req,
+          res,
+          fndUser,
+          200,
+          true,
+          "Get profile successfully."
+        );
+      } else {
+        return responseObject(req, res, {}, 401, false, "Data not found");
+      }
+    } catch (err) {
+      return responseObject(
+        req,
+        res,
+        {},
+        500,
+        false,
+        "Something went wrong. Please try again"
+      );
+    }
+  },
+
   async uploadFile(req, res) {
     try {
-
-      console.log("=====filenaem", req.file)
+      console.log("=====filenaem", req.file);
       const uploadedFile = req.file;
 
       if (uploadedFile) {
@@ -144,8 +170,3 @@ export default {
     }
   },
 };
-
-
-
-
-
